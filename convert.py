@@ -1,6 +1,8 @@
 """This python3 script will recognize hex, binary, and base64 strings and convert them to ascii."""
 #Written by Christopher Rider
 
+#Note: base64 strings without padding ('=') that contain only [A-Fa-f0-9] will be recognized as hex. 
+
 import codecs
 import base64
 import re
@@ -38,7 +40,7 @@ def check_hex(hex):
     if hex[:2] == '0x':
         hex = hex[2:]
     x = len(hex)
-    if bool(re.search('[a-fA-F0-9=]{' + str(x) + '}', hex)):
+    if bool(re.search('[a-fA-F0-9]{' + str(x) + '}', hex)):
         return True
 
 def convert_hex(hex):
